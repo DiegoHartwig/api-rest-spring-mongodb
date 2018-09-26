@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.net.hartwig.springmongodb.domain.User;
+import br.net.hartwig.springmongodb.dto.UserDTO;
 import br.net.hartwig.springmongodb.repository.UserRepository;
 import br.net.hartwig.springmongodb.services.exception.ObjectNotFoundException;
 
@@ -28,6 +29,16 @@ public class UserService {
 
 		return user.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
 
+	}
+
+	public User insert(User user) {
+
+		return repo.insert(user);
+
+	}
+
+	public User fromDTO(UserDTO userDto) {
+		return new User(userDto.getId(), userDto.getName(), userDto.getEmail());
 	}
 
 }
