@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import br.net.hartwig.springmongodb.domain.Post;
 import br.net.hartwig.springmongodb.domain.User;
 import br.net.hartwig.springmongodb.dto.AuthorDTO;
+import br.net.hartwig.springmongodb.dto.CommentDTO;
 import br.net.hartwig.springmongodb.repository.PostRepository;
 import br.net.hartwig.springmongodb.repository.UserRepository;
 
@@ -43,6 +44,13 @@ public class Instantiation implements CommandLineRunner {
 				"Esse é o primeiro post de teste", new AuthorDTO(diego));
 		Post post2 = new Post(null, simpleDateFormat.parse("02/10/2018"), "Segundo post",
 				"Esse é o segundo post de teste", new AuthorDTO(aline));
+
+		CommentDTO comentario1 = new CommentDTO("Comentario de teste", simpleDateFormat.parse("02/10/2018"),
+				new AuthorDTO(diego));
+		CommentDTO comentario2 = new CommentDTO("Comentario de teste2", simpleDateFormat.parse("02/10/2018"),
+				new AuthorDTO(aline));
+
+		post1.getComments().addAll(Arrays.asList(comentario1, comentario2));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
 
