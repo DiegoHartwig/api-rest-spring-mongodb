@@ -8,6 +8,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.net.hartwig.springmongodb.dto.AuthorDTO;
 
+/**
+ * @author Diego Hartwig
+ * @since 1.0.2018
+ * @version 1.0.2018
+ */
+
 @Document
 public class Post implements Serializable {
 
